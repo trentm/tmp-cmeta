@@ -10,7 +10,8 @@ function log(msg) {
 
 function setup() {
     const server = http.createServer(function handle (req, res) {
-    res.end('hi')
+        apm.sendSpan('handled request')
+        res.end('hi')
     })
     server.listen(3000, () => {
         log('listening at http://localhost:3000')
